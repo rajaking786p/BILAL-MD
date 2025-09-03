@@ -3,18 +3,18 @@ const { cmd, commands } = require('../command');
 
 cmd({
     pattern: "ping",
-    alias: ["speed","pong"],use: '.ping',
+    alias: ["speed","pong","hi"],use: '.ping',
     desc: "Check bot's response time.",
     category: "main",
-    react: "⚡",
+    react: "🔰",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, sender, reply }) => {
     try {
         const start = new Date().getTime();
 
-        const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
-        const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
+        const reactionEmojis = ['👑'];
+        const textEmojis = ['👑'];
 
         const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
         let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
@@ -32,7 +32,7 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
         const end = new Date().getTime();
         const responseTime = (end - start) / 1000;
 
-        const text = `> *BILAL-𝐌𝐃: ${responseTime.toFixed(2)}ms ${reactionEmoji}*`;
+        const text = `Yes...😊🌺 ${reactionEmoji}*`;
 
         await conn.sendMessage(from, {
             text,
@@ -42,7 +42,7 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363296818107681@newsletter',
-                    newsletterName: "BILAL-ᴍᴅ speed👻",
+                    newsletterName: "I Am Here",
                     serverMessageId: 143
                 }
             }
@@ -60,16 +60,16 @@ cmd({
     pattern: "ping2",
     desc: "Check bot's response time.",
     category: "main",
-    react: "🍂",
+    react: "👑",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '*PINGING...*' })
+        const message = await conn.sendMessage(from, { text: 'Gg...😊' })
         const endTime = Date.now()
         const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `*🔥 BILAL-MD SPEED : ${ping}ms*` }, { quoted: message })
+        await conn.sendMessage(from, { text: `*BOLIYE...😊` }, { quoted: message })
     } catch (e) {
         console.log(e)
         reply(`${e}`)
