@@ -12,13 +12,13 @@ cmd({
 }, async (conn, mek, m, { from, reply }) => {
     try {
         const menuCaption = `╭━━━〔 *👑 BiLAL-MD 👑* 〕━━━┈⊷
-*┃★╭──────────────*
+*┃👑╭──────────────*
 *┃👑│ USER:❯* ${config.OWNER_NAME}
 *┃👑│ DEVELOPER :❯* BiLAL
 *┃👑│ PLATFORM :❯* LiNUX
 *┃👑│ MODE :❯* ${config.MODE}
 *┃👑│ PREFiX :❯* ${config.PREFIX}
-*┃👑│ VERSION :❯* *1.0*
+*┃👑│ VERSION :❯* 1.0
 *┃👑╰──────────────*
 *╰━━━━━━━━━━━━━━━┈⊷*
 *╭━━〔 👑 MENU 👑 〕━━┈⊷*
@@ -32,8 +32,8 @@ cmd({
 *┃🔰│ ❮7❯ MAiN MENU*
 *┃🔰╰───────────┈⊷*
 *╰──────────────┈⊷*
-*_FIRST IMPORTANT AP MERE IS MENU WALW MESSAGE KO MENTION LAZMI KARE LAZMIIII KAREIN AUR APKO JO BHI MENU KE COMMANDS CHAHYE AP US MENU KA NUMBER LIKHE JESE AP NUMBER ❮1❯ LIKHO GE TO ❮DOWNLOAD MENU❯ KE COMMANDS SHOW HOGE AUR AGAR AP NUMBER ❮2❯ LIKHO GE TO ❮GROUP MENU❯ KE COMMANDS SHOW GE AUR AGAR AP NUMBER  ❮3❯ LIKHE GE TO AP KO JIS MENU KE COMMANDS CHAHYE AP US MENU KA NUMBER LIKHE SHYD APKO SAMAJH AA GAYI HOGI KE KESE MENU KE COMMANDS SHOW HOGE☺️♥️_*
-> ${config.DESCRIPTION}`;
+*_FIRST IMPORTANT AP MERE IS MENU WALW MESSAGE KO MENTION LAZMI KARE LAZMIIII KAREIN AUR APKO JO BHI MENU KE COMMANDS CHAHYE AP US MENU KA NUMBER LIKHE JESE AP NUMBER ❮1❯ LIKHO GE TO ❮DOWNLOAD MENU❯ KE COMMANDS SHOW HOGE AUR AGAR AP NUMBER ❮2❯ LIKHO GE TO ❮GROUP MENU❯ KE COMMANDS SHOW GE AUR AGAR AP NUMBER  ❮3❯ LIKHE GE TO AP KO JIS MENU KE COMMANDS CHAHYE AP US MENU KA NUMBER LIKHE SHYD APKO SAMAJH AA GAYI HOGI KE KESE MENU KE COMMANDS SHOW HOGE_*
+*👑 BILAL-MD WHATSAPP BOT 👑*`;
 
         const contextInfo = {
             mentionedJid: [m.sender],
@@ -112,74 +112,58 @@ cmd({
         // Menu data (complete version)
         const menuData = {
             '1': {
-                title: "📥 *Download Menu* 📥",
-                content: `╭━━━〔 *Download Menu* 〕━━━┈⊷
-┃★╭──────────────
-┃★│ 🌐 *Social Media*
-┃★│ • facebook [url]
-┃★│ • mediafire [url]
-┃★│ • tiktok [url]
-┃★│ • twitter [url]
-┃★│ • Insta [url]
-┃★│ • apk [app]
-┃★│ • img [query]
-┃★│ • tt2 [url]
-┃★│ • pins [url]
-┃★│ • apk2 [app]
-┃★│ • fb2 [url]
-┃★│ • pinterest [url]
-┃★╰──────────────
-┃★╭──────────────
-┃★│ 🎵 *Music/Video*
-┃★│ • spotify [query]
-┃★│ • play [song]
-┃★│ • play2-10 [song]
-┃★│ • audio [url]
-┃★│ • video [url]
-┃★│ • video2-10 [url]
-┃★│ • ytmp3 [url]
-┃★│ • ytmp4 [url]
-┃★│ • song [name]
-┃★│ • darama [name]
-┃★╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
-> ${config.DESCRIPTION}`,
+                title: "*👑 DOWNLOAD MENU 👑*",
+                content: `*╭━━━〔 👑 DOWNLOAD MENU 👑 〕━━━┈⊷*
+*┃👑╭──────────────*
+┃👑│ • facebook 
+┃👑│ • mediafire 
+┃👑│ • tiktok 
+┃👑│ • twitter 
+┃👑│ • Insta 
+┃👑│ • apk 
+┃👑│ • img 
+┃👑│ • tt2 
+┃👑│ • pins 
+┃👑│ • apk2 
+┃👑│ • fb2 
+┃👑│ • pinterest 
+┃👑│ • play  
+┃👑│ • audio 
+┃👑│ • video 
+┃👑│ • ytmp3 
+┃👑│ • ytmp4 
+┃👑│ • song 
+┃👑│ • darama 
+*╰━━━━━━━━━━━━━━━┈⊷*
+*👑 BILAL-MD WHATSAPP BOT 👑*`,
                 image: true
             },
             '2': {
-                title: "👥 *Group Menu* 👥",
-                content: `╭━━━〔 *Group Menu* 〕━━━┈⊷
-┃★╭──────────────
-┃★│ 🛠️ *Management*
-┃★│ • grouplink
-┃★│ • kickall
-┃★│ • kickall2
-┃★│ • kickall3
-┃★│ • add @user
-┃★│ • remove @user
-┃★│ • kick @user
-┃★╰──────────────
-┃★╭──────────────
-┃★│ ⚡ *Admin Tools*
-┃★│ • promote @user
-┃★│ • demote @user
-┃★│ • dismiss 
-┃★│ • revoke
-┃★│ • mute [time]
-┃★│ • unmute
-┃★│ • lockgc
-┃★│ • unlockgc
-┃★╰──────────────
-┃★╭──────────────
-┃★│ 🏷️ *Tagging*
-┃★│ • tag @user
-┃★│ • hidetag [msg]
-┃★│ • tagall
-┃★│ • tagadmins
-┃★│ • invite
-┃★╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
-> ${config.DESCRIPTION}`,
+                title: "*👑 GROUP MENU 👑*",
+                content: `*╭━━━〔 *👑 GROUP MENU 👑* 〕━━━┈⊷*
+*┃👑╭──────────────*
+┃👑│ • grouplink
+┃👑│ • kickall
+┃👑│ • kickall2
+┃👑│ • kickall3
+┃👑│ • add @user
+┃👑│ • remove @user
+┃👑│ • kick @user
+┃👑│ • promote @user
+┃👑│ • demote @user
+┃👑│ • dismiss 
+┃👑│ • revoke
+┃👑│ • mute 
+┃👑│ • unmute
+┃👑│ • lockgc
+┃👑│ • unlockgc
+┃👑│ • tag @user
+┃👑│ • hidetag [msg]
+┃👑│ • tagall
+┃👑│ • tagadmins
+┃👑│ • invite
+*╰━━━━━━━━━━━━━━━┈⊷*
+*👑 BILAL-MD WHATSAPP BOT 👑*`,
                 image: true
             },
             '180': {
@@ -212,55 +196,41 @@ cmd({
                 image: true
             },
             '3': {
-                title: "👑 *Owner Menu* 👑",
-                content: `╭━━━〔 *Owner Menu* 〕━━━┈⊷
-┃★╭──────────────
-┃★│ ⚠️ *Restricted*
-┃★│ • block @user
-┃★│ • unblock @user
-┃★│ • fullpp [img]
-┃★│ • setpp [img]
-┃★│ • restart
-┃★│ • shutdown
-┃★│ • updatecmd
-┃★╰───────────���──
-┃★╭──────────────
-┃★│ ℹ️ *Info Tools*
-┃★│ • gjid
-┃★│ • jid @user
-┃★│ • listcmd
-┃★│ • allmenu
-┃★╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
-> ${config.DESCRIPTION}`,
+                title: "*👑 USER MENU 👑*",
+                content: `╭━━━〔 *👑 USER MENU 👑* 〕━━━┈⊷
+*┃👑╭──────────────*
+┃👑│ • block 
+┃👑│ • unblock 
+┃👑│ • fullpp 
+┃👑│ • setpp 
+┃👑│ • restart
+┃👑│ • shutdown
+┃👑│ • updatecmd
+┃👑│ • gjid
+┃👑│ • jid 
+┃👑│ • listcmd
+┃👑│ • allmenu
+*╰━━━━━━━━━━━━━━━┈⊷*
+*👑 BILAL-MD WHATSAPP BOT 👑*`,
                 image: true
             },
             '4': {
-                title: "🤖 *AI Menu* 🤖",
-                content: `╭━━━〔 *AI Menu* 〕━━━┈⊷
-┃★╭──────────────
-┃★│ 💬 *Chat AI*
-┃★│ • ai [query]
-┃★│ • gpt3 [query]
-┃★│ • gpt2 [query]
-┃★│ • gptmini [query]
-┃★│ • gpt [query]
-┃★│ • meta [query]
-┃★╰──────────────
-┃★╭──────────────
-┃★│ 🖼️ *Image AI*
-┃★│ • imagine [text]
-┃★│ • imagine2 [text]
-┃★╰──────────────
-┃★╭──────────────
-┃★│ 🔍 *Specialized*
-┃★│ • blackbox [query]
-┃★│ • luma [query]
-┃★│ • dj [query]
-┃★│ • white [query]
-┃★╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
-> ${config.DESCRIPTION}`,
+                title: "*👑 Ai MENU 👑*",
+                content: `*╭━━━〔 👑 Ai MENU 👑 〕━━━┈⊷*
+┃★│ • ai 
+┃★│ • gpt3 
+┃★│ • gpt2 
+┃★│ • gptmini 
+┃★│ • gpt 
+┃★│ • meta 
+┃★│ • imagine 
+┃★│ • imagine2 
+┃★│ • blackbox 
+┃★│ • luma 
+┃★│ • dj 
+┃★│ • white 
+*╰━━━━━━━━━━━━━━━┈⊷*
+*👑 BILAL-MD WHATSAPP BOT 👑*`,
                 image: true
             },
             '123': {
