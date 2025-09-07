@@ -2,89 +2,89 @@ const { cmd } = require('../command');
 const axios = require('axios');
 
 cmd({
-    pattern: "ai",
-    alias: ["bot", "white", "gpt", "gpt4", "bing"],
+    pattern: "gpt",
+    alias: ["bot", "white", "ai", "gpt4", "bing"],
     desc: "Chat with an AI model",
     category: "ai",
-    react: "🤖",
+    react: "🤔",
     filename: __filename
 },
 async (conn, mek, m, { from, args, q, reply, react }) => {
     try {
-        if (!q) return reply("Please provide a message for the AI.\nExample: `.ai Hello`");
+        if (!q) return reply("*AP KOI SAWAL MUJH SE PUCHNA CHAHTE HAI...🤔 \n *AP ESE LIKHO ☺️* \n*ai ❮APNA SAWAL YAHA LIKHE❯* \n *JESE NICHE KUCH SAWAL PUCHE HUWE HAI \n *AI MUJHE YEH CHIZ SAMAJH NAHI AA RAHI* \n *AI PAKISTAN KA SAB SE BARA MULK KON SA HAJ* \n *AI COMPUTER KESE CHALATE HA* \n *AGAR AP KO SAMAJH NA AYE TO MUJH SE PUCH LE☺️♥️");
 
         const apiUrl = `https://lance-frank-asta.onrender.com/api/gpt?q=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data || !data.message) {
-            await react("❌");
-            return reply("AI failed to respond. Please try again later.");
+            await react("");
+            return reply("*APKA SAWAL KA JAWAB NAHI MERE PASS 😔*");
         }
 
-        await reply(`🤖 *BILAL-MD Ai Response:*\n\n${data.message}`);
-        await react("✅");
+        await reply(`*APKE SAWAL KA JAWAB MIL GAYA 😃*\n\n${data.message}`);
+        await react("☺️");
     } catch (e) {
-        console.error("Error in AI command:", e);
-        await react("❌");
-        reply("An error occurred while communicating with the AI.");
+        console.error("ERROR...", e);
+        await react("😔");
+        reply("*APKA SAWAL KA JAWAB NAHI MERE PASS 😔*");
     }
 });
 
 cmd({
-    pattern: "openai",
+    pattern: "bing",
     alias: ["chatgpt", "gpt3", "open-gpt"],
     desc: "Chat with OpenAI",
     category: "ai",
-    react: "🧠",
+    react: "🤔",
     filename: __filename
 },
 async (conn, mek, m, { from, args, q, reply, react }) => {
     try {
-        if (!q) return reply("Please provide a message for OpenAI.\nExample: `.openai Hello`");
+        if (!q) return reply("*AP KOI SAWAL MUJH SE PUCHNA CHAHTE HAI TO ESE LIKHE ☺️♥️ \n *.OPENAI PAKISTAN KA QOMI JANWAR KON SA HAI \n *OPENAI PAKISTAN DUNIYA ME KAHA PER MOOJUD HA* \n *OPENAI MUSELMANO PER KITNY NAMAZE FARAZ HAI* \n AGAR APKO KUCH SAMAJH NA AYE TO MUJH SE PUCH SAKTE HAI ☺️♥️");
 
         const apiUrl = `https://vapis.my.id/api/openai?q=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data || !data.result) {
-            await react("❌");
-            return reply("OpenAI failed to respond. Please try again later.");
+            await react("😔");
+            return reply("*APKA SAWAL THORA SA MUSHKIL HAI IS LIE JAWAB NAHI MILA 😔*");
         }
 
-        await reply(`🧠 *OpenAI Response:*\n\n${data.result}`);
-        await react("✅");
+        await reply(`YEH HAI APKE SAWAL KA JAWAB ☺️*\n\n${data.result}`);
+        await react("☺️");
     } catch (e) {
-        console.error("Error in OpenAI command:", e);
-        await react("❌");
-        reply("An error occurred while communicating with OpenAI.");
+        console.error("ERROR", e);
+        await react("😭");
+        reply("*AP KOI AUR SAWAL PUCHIYE...☺️*");
     }
 });
 
 cmd({
-    pattern: "deepseek",
+    pattern: "ai",
     alias: ["deep", "seekai"],
     desc: "Chat with DeepSeek AI",
     category: "ai",
-    react: "🧠",
+    react: "🤔",
     filename: __filename
 },
 async (conn, mek, m, { from, args, q, reply, react }) => {
     try {
-        if (!q) return reply("Please provide a message for DeepSeek AI.\nExample: `.deepseek Hello`");
+        if (!q) return reply("*UHO APKE PAS KOI SAWAL HAI AUR APKO USKA JAWAB NAHI PATA AP MUJH SE PUCHIE ESE SAWAL PUCHIYE 😊♥️* \n *.AI PAKISTAN KE ABADI KITNY HAI* \n *.AI QURAN MAJEED ME KITNY SOORATEIN HAI* \n *AI TUM COMPUTER HO* ");
 
         const apiUrl = `https://api.ryzendesu.vip/api/ai/deepseek?text=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data || !data.answer) {
-            await react("❌");
-            return reply("DeepSeek AI failed to respond. Please try again later.");
+            await react("😔");
+            return reply("*APKA SAWAL MUJHE SAMAJH NAHI AA RAHA 😔");
         }
 
-        await reply(`🧠 *DeepSeek AI Response:*\n\n${data.answer}`);
-        await react("✅");
+        await reply(`*APKE SAWAL KA JAWAB 😃*\n\n${data.answer}`);
+        await react("☺️");
     } catch (e) {
-        console.error("Error in DeepSeek AI command:", e);
-        await react("❌");
-        reply("An error occurred while communicating with DeepSeek AI.");
+        console.error("ERROR::", e);
+        await react("😔");
+        reply("*AP KOI AUR SAWAL PUCHE PLEZ ☺️*");
     }
 });
 
