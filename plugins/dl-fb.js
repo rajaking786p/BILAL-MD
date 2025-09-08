@@ -64,7 +64,7 @@ cmd({
     if (choice === "1" && sdLink) {
       await conn.sendMessage(m.chat, {
         video: { url: sdLink },
-        caption: "📥 *Facebook SD Video Downloaded*\n\n- Powered By BILAL-ᎷᎠ ✅"
+        caption: "*APKI LOW QUALITY VIDEO DOWNLOAD HO GAI HAI 😊❤️* \n *👑 BILAL-MD WHATSAPP BOT 👑*"
       }, { quoted: m });
       delete conn.FB_DOWNLOAD[user];
     }
@@ -72,7 +72,7 @@ cmd({
     if (choice === "2" && hdLink) {
       await conn.sendMessage(m.chat, {
         video: { url: hdLink },
-        caption: "📥 *Facebook HD Video Downloaded*\n\n- Powered By BILAL-ᎷᎠ ✅"
+        caption: "*APKI HD QUALITY VIDEO DOWNLOAD HO GAI HAI 😊❤️* \n *👑 BILAL-MD WHATSAPP BOT 👑*"
       }, { quoted: m });
       delete conn.FB_DOWNLOAD[user];
     }
