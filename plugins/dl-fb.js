@@ -11,7 +11,7 @@ cmd({
 }, async (conn, m, store, { from, q, reply }) => {
   try {
     if (!q || !q.startsWith("http")) {
-      return reply("*KISI BHI FACEBOOK VIDEO KA URL COPY KAR LO AUR FIR ESE LIKHO 😊❤️* \n *FB ❮FACEBOOK VIDEO LINK❯* \n TO APKI FACEBOOK VIDEO DOWNLOAD HO JAYE GE AUR YAHA SEND HOGI ☺️🌹*");
+      return reply("*KISI BHI FACEBOOK VIDEO KA LINK COPY KAR LO AUR FIR ESE LIKHO 😊❤️* \n *FB ❮FACEBOOK VIDEO LINK❯* \n TO APKI FACEBOOK VIDEO DOWNLOAD HO JAYE GE AUR YAHA SEND HOGI ☺️🌹*");
     }
 
     // Loading react
@@ -46,7 +46,7 @@ cmd({
 
   } catch (e) {
     console.error("FB Error:", e);
-    reply("❌ Error fetching the video. Please try again.");
+    reply("*APKI VIDEO DOWNLOAD NAHI HO RAHI SORRY 😔*");
   }
 });
 
