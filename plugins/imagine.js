@@ -37,7 +37,7 @@ cmd({
 });
 
 cmd({
-  pattern: "imagine2",
+  pattern: "pic",
   alias: ["sdiffusion", "imagrt"],
   react: "🖼️",
   desc: "Generate an image using AI.",
@@ -71,7 +71,7 @@ cmd({
 });
 
 cmd({
-  pattern: "imagine3",
+  pattern: "photo",
   alias: ["stability", "imagi"],
   react: "🖼️",
   desc: "Generate an image using AI.",
