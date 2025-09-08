@@ -13,14 +13,14 @@ cmd(
     {
         pattern: 'take',
         alias: ['rename', 'stake'],
-        desc: 'Create a sticker with a custom pack name.',
+        desc: '*AP KISI BHI STICKER KO MENTION KARO AUR PHIR LIKHO \n *take APNA NAME LIKHO* \n *JAB ESE KARO GE TO US STICKER KA NAME APKE NAME K SATH CHANGE HO JAYE GA AUR WO STICKER APKE NAME KA BAN JAYE GA 😊🌹**',
         category: 'sticker',
         use: '<reply media or URL>',
         filename: __filename,
     },
     async (conn, mek, m, { quoted, args, q, reply, from }) => {
-        if (!mek.quoted) return reply(`*Reply to any sticker.*`);
-        if (!q) return reply(`*Please provide a pack name using .take <packname>*`);
+        if (!mek.quoted) return reply(`*PEHLE KISI STICKER KO MENTION KARO 😊🌹*`);
+        if (!q) return reply(`*DUBARA KOSHISH KARO 😊🌹*`);
 
         let mime = mek.quoted.mtype;
         let pack = q;
@@ -38,7 +38,7 @@ cmd(
             const buffer = await sticker.toBuffer();
             return conn.sendMessage(mek.chat, { sticker: buffer }, { quoted: mek });
         } else {
-            return reply("*Uhh, Please reply to an image.*");
+            return reply("*FIR KOSHISH KARO 🥺❤️*");
         }
     }
 );
@@ -55,9 +55,9 @@ cmd(
         filename: __filename,
     },
     async (conn, mek, m, { quoted, args, q, reply, from }) => {
-        if (!mek.quoted) return reply(`*Reply to any Image or Video, Sir.*`);
+        if (!mek.quoted) return reply(`*AP KISI PHOTO , VIDEO KO MENTION KARO AUR PHIR LIKHO ☺️🌹* \n STICKER* \n *JAB AP STICKER LIKHO GE TO APKI PHOTO YA VIDEO STICKER BAN JAYE GE OK 😊❤️*`);
         let mime = mek.quoted.mtype;
-        let pack = Config.STICKER_NAME || "Jawad TechX";
+        let pack = Config.STICKER_NAME || "👑 BILAL-MD 👑";
         
         if (mime === "imageMessage" || mime === "stickerMessage") {
             let media = await mek.quoted.download();
@@ -72,7 +72,7 @@ cmd(
             const buffer = await sticker.toBuffer();
             return conn.sendMessage(mek.chat, { sticker: buffer }, { quoted: mek });
         } else {
-            return reply("*Uhh, Please reply to an image.*");
+            return reply("*ARE AP PHOTO YA VIDEO KO MENTION KARE BAS AUR KISI CHIZ KO NAI OK 😊❤️*");
         }
     }
 );
