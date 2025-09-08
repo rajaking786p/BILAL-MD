@@ -11,32 +11,32 @@ cmd({
 }, async (conn, m, store, { from, q, reply }) => {
   try {
     if (!q || !q.startsWith("http")) {
-      return reply("*`Need a valid Facebook URL`*\n\nExample: `.fb https://www.facebook.com/...`");
+      return reply("*KISI BHI FACEBOOK VIDEO KA URL COPY KAR LO AUR FIR ESE LIKHO 😊❤️* \n *FB ❮FACEBOOK VIDEO LINK❯* \n TO APKI FACEBOOK VIDEO DOWNLOAD HO JAYE GE AUR YAHA SEND HOGI ☺️🌹*");
     }
 
     // Loading react
-    await conn.sendMessage(from, { react: { text: '⏳', key: m.key } });
+    await conn.sendMessage(from, { react: { text: '☺️', key: m.key } });
 
     // API Call
     const apiUrl = `https://supun-md-api-xmjh.vercel.app/api/download/fbdown?url=${encodeURIComponent(q)}`;
     const { data } = await axios.get(apiUrl);
 
     if (!data.success || !data.results) {
-      return reply("❌ Failed to fetch the video. Try another link.");
+      return reply("*APKI YE FACEBOOK VIDEO DOWNLOAD NAHI HO SAKTI SORRY 😔*");
     }
 
     const { title, description, hdLink, sdLink } = data.results;
 
-    if (!hdLink && !sdLink) return reply("❌ No downloadable link found.");
+    if (!hdLink && !sdLink) return reply("*LINK SE VIDEO DOWNLOAD NAHI HUI 😔*");
 
     // Show choices
-    let menu = `📥 *Facebook Video Downloader*\n\n`;
-    menu += `*🎬 Title:* ${title}\n`;
-    menu += `*📝 Description:* ${description}\n\n`;
-    menu += `🔽 Choose Quality by Replying Number:\n\n`;
-    if (sdLink) menu += `1️⃣ SD Quality\n`;
-    if (hdLink) menu += `2️⃣ HD Quality\n\n`;
-    menu += `⚡ Reply with *1* or *2*`;
+    let menu = `*👑 BILAL-MD 👑*\n\n`;
+    menu += `*🔰 NAME :❯* ${title}\n`;
+    menu += `*🔰 DETAILS :❯ ${description}\n\n`;
+    menu += `* APKO HD QUALITY ME VIDEO DOWNLOAD KARNI HAI YA NORMAL QUALITY ME ?* \n\n`;
+    if (sdLink) menu += `*❮1❯ LOW* \n`;
+    if (hdLink) menu += `*❮2❯ HD* \n\n`;
+    menu += `PEHLE IS MSG KO MENTION KARO AUR USKE BAD NUMBER ❮1❯ FOR LOW OR ❮2❯ FOR HD K LIE LIKHO`;
 
     await conn.sendMessage(from, { text: menu }, { quoted: m });
 
