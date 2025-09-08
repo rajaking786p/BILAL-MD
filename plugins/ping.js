@@ -11,10 +11,9 @@ cmd({
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
   try {
     const startTime = Date.now()
-    const message = await conn.sendMessage(from, { text: '*Gg...☺️*' })
+    await conn.sendMessage(from, { text: '*Gg...☺️*' })
     const endTime = Date.now()
-    const ping = endTime - startTime
-    await conn.sendMessage(from, { text: `*BOLIYE...🌹*` }, { quoted: message })
+    console.log('Response time: ' + (endTime - startTime) + ' ms')
   } catch (e) {
     console.log(e)
     reply(`${e}`)
