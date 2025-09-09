@@ -1,111 +1,124 @@
-const config = require('../config');
-const { cmd } = require('../command');
-const { ytsearch } = require('@dark-yasiya/yt-dl.js');
-
-// MP4 video download
+const { cmd } = require("../command");
+const axios = require("axios");
+const ytSearch = require("yt-search");
 
 cmd({
-    pattern: "video",
-    alias: ["videox"],
-    desc: "To download videos.",
-    react: "🎥",
-    category: "download",
-    filename: __filename
-},
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try {
-    if (!q) return reply("Please give me a url or title");
+  pattern: "video",
+  alias: ["ytmp4", "v"],
+  desc: "Download YouTube videos by name or keyword",
+  category: "media",
+  react: "🎬",
+  filename: __filename
+}, async (conn, mek, m, { from, q }) => {
+  if (!q) {
+    return conn.sendMessage(from, { text: "❌ Please enter a YouTube video keyword or name!" }, { quoted: mek });
+  }
 
-    const search = await yts(q);
-    const data = search.videos[0];
-    const url = data.url;
+  try {
+    // 🔍 Searching reaction
+    await conn.sendMessage(from, { react: { text: "🔎", key: mek.key } });
 
-    let desc = `
-*███⦁BILAL-MD DOWNLOADⵊNG⦁███*
+    // 🔎 Search YouTube
+    const searchResult = await ytSearch(q);
+    const video = searchResult.videos?.[0];
+    if (!video) throw new Error("No video found");
 
-🎥 *VⵊDEO FOUND!* 
+    // 🎯 Fetch download info
+    const downloadInfo = await fetchVideoDownload(video);
 
-➥ *Title:* ${data.title} 
-➥ *Duration:* ${data.timestamp} 
-➥ *Views:* ${data.views} 
-➥ *Uploaded On:* ${data.ago} 
-➥ *Link:* ${data.url} 
+    // 🌟 Send modern preview
+    await sendStyledPreview(conn, from, mek, video, downloadInfo);
 
-🎬 *ENJOY THE VIDEO BROUGHT TO YOU!*
+    // 🎬 Send actual video
+    await sendStyledVideo(conn, from, mek, video, downloadInfo);
 
-> *BILAL-MD* 
-`;
+    // ✅ Success reaction
+    await conn.sendMessage(from, { react: { text: "✅", key: mek.key } });
 
-    await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
-
-    // Use new API
-    let apiRes = await fetch(`https://api.giftedtech.web.id/api/download/dlmp4?apikey=gifted&url=${encodeURIComponent(url)}`);
-    let json = await apiRes.json();
-
-    if (!json.success) return reply("Failed to fetch video from new API");
-
-    let downloadUrl = json.result.download_url;
-
-    await conn.sendMessage(from, { video: { url: downloadUrl }, mimetype: "video/mp4" }, { quoted: mek });
-    await conn.sendMessage(from, {
-        document: { url: downloadUrl },
-        mimetype: "video/mp4",
-        fileName: json.result.title + ".mp4",
-        caption: "*Powered by BILAL-MD✅*"
-    }, { quoted: mek });
-
-} catch (e) {
-    console.log(e);
-    reply(`_Hi ${pushname}, retry later_`);
-}
-})
-
-
-// MP3 song download 
-
-cmd({ 
-    pattern: "song", 
-    alias: ["play", "mp3"], 
-    react: "🎶", 
-    desc: "Download YouTube song", 
-    category: "main", 
-    use: '.song <query>', 
-    filename: __filename 
-}, async (conn, mek, m, { from, sender, reply, q }) => { 
-    try {
-        if (!q) return reply("Please provide a song name or YouTube link.");
-
-        const yt = await ytsearch(q);
-        if (!yt.results.length) return reply("No results found!");
-
-        const song = yt.results[0];
-        const apiUrl = `https://apis.davidcyriltech.my.id/youtube/mp3?url=${encodeURIComponent(song.url)}`;
-        
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-
-        if (!data?.result?.downloadUrl) return reply("Download failed. Try again later.");
-
-    await conn.sendMessage(from, {
-    audio: { url: data.result.downloadUrl },
-    mimetype: "audio/mpeg",
-    fileName: `${song.title}.mp3`,
-    contextInfo: {
-        externalAdReply: {
-            title: song.title.length > 25 ? `${song.title.substring(0, 22)}...` : song.title,
-            body: "Join our WhatsApp Channel",
-            mediaType: 1,
-            thumbnailUrl: song.thumbnail.replace('default.jpg', 'hqdefault.jpg'),
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak4dFAHQbSBzyxlGG13',
-            mediaUrl: 'https://whatsapp.com/channel/0029Vak4dFAHQbSBzyxlGG13',
-            showAdAttribution: true,
-            renderLargerThumbnail: true
-        }
-    }
-}, { quoted: mek });
-
-    } catch (error) {
-        console.error(error);
-        reply("An error occurred. Please try again.");
-    }
+  } catch (err) {
+    console.error(err);
+    await conn.sendMessage(from, { text: "❌ Something went wrong! Please try again later." }, { quoted: mek });
+    await conn.sendMessage(from, { react: { text: "❌", key: mek.key } });
+  }
 });
+
+// -------------------
+// Helper: Fetch Video
+// -------------------
+async function fetchVideoDownload(video) {
+  const apis = [
+    `https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(video.url)}`,
+    `https://iamtkm.vercel.app/downloaders/ytmp4?url=${encodeURIComponent(video.url)}`
+  ];
+
+  for (let i = 0; i < apis.length; i++) {
+    try {
+      const res = await axios.get(apis[i]);
+      const data = i === 0 ? res.data.result : res.data?.data;
+      const url = data?.download_url || data?.url;
+      if (!url) throw new Error("No download URL found");
+
+      return {
+        title: data.title || video.title,
+        thumbnail: data.thumbnail || video.thumbnail,
+        download_url: url,
+        quality: data.quality || (i === 0 ? "HD" : "Standard"),
+      };
+    } catch (e) {
+      if (i === apis.length - 1) throw new Error("All APIs failed");
+    }
+  }
+}
+
+// -------------------
+// Helper: Styled Preview
+// -------------------
+async function sendStyledPreview(conn, from, mek, video, info) {
+  const caption = `🎬 *Video Preview* 🎬\n\n` +
+                  `📌 *Title:* ${info.title}\n` +
+                  `⏱️ *Duration:* ${video.timestamp}\n` +
+                  `👁️ *Views:* ${video.views.toLocaleString()}\n` +
+                  `📺 *Quality:* ${info.quality}\n` +
+                  `📅 *Published:* ${video.ago}\n\n` +
+                  `💡 Click the video below to stream or download!`;
+
+  await conn.sendMessage(from, {
+    image: { url: info.thumbnail },
+    caption,
+    contextInfo: {
+      externalAdReply: {
+        title: "Popkid XMD Bot | Video Stream",
+        body: "Seamless YouTube Video Streaming",
+        thumbnailUrl: info.thumbnail,
+        sourceUrl: video.url,
+        mediaType: 1,
+        renderLargerThumbnail: true,
+      },
+    },
+  }, { quoted: mek });
+}
+
+// -------------------
+// Helper: Styled Video
+// -------------------
+async function sendStyledVideo(conn, from, mek, video, info) {
+  const caption = `🎥 *Streaming Now* 🎥\n\n` +
+                  `💻 Powered by Popkid XMD Bot\n` +
+                  `↻ Click play to watch or save locally!`;
+
+  await conn.sendMessage(from, {
+    video: { url: info.download_url },
+    mimetype: "video/mp4",
+    caption,
+    contextInfo: {
+      externalAdReply: {
+        title: "Popkid XMD Bot | Stream & Download",
+        body: "Watch instantly or save for later",
+        thumbnailUrl: info.thumbnail,
+        sourceUrl: video.url,
+        mediaType: 1,
+        renderLargerThumbnail: true,
+      },
+    },
+  }, { quoted: mek });
+}
