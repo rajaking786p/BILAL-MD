@@ -25,10 +25,10 @@ cmd({
 
     if (containsBadWord && config.ANTI_BAD_WORD === "true") {
       await conn.sendMessage(from, { 'delete': m.key }, { 'quoted': m });
-      await conn.sendMessage(from, { 'text': "🚫 ⚠️ BAD WORDS NOT ALLOWED ⚠ 😾 🚫" }, { 'quoted': m });
+      await conn.sendMessage(from, { 'text': "*AP GANDE ALFAZ NA BOLE PLEZ 🙏🥺*" }, { 'quoted': m });
     }
   } catch (error) {
     console.error(error);
-    reply("An error occurred while processing the message.");
+    reply("*E R R O R*");
   }
 });
