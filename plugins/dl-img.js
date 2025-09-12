@@ -4,7 +4,7 @@ const axios = require("axios");
 cmd({
     pattern: "img",
     alias: ["image", "googleimage", "searchimg"],
-    react: "🦋",
+    react: "🖼️",
     desc: "Search and download Google images",
     category: "fun",
     use: ".img <keywords>",
@@ -13,17 +13,17 @@ cmd({
     try {
         const query = args.join(" ");
         if (!query) {
-            return reply("🖼️ Please provide a search query\nExample: .img cute cats");
+            return reply("*APKO KON C PHOTOS DOWNLOAD KARNI HAI...🤔* \n * ESE LIKHO 😊♥️* \n *.IMG FLOWERS PICS*");
         }
 
-        await reply(`🔍 Searching images for "${query}"...`);
+        await reply(`*THORI DER ME APKI PHOTOS SEND KAR DI JAYE GE ☺️❤️*`);
 
         const url = `https://apis.davidcyriltech.my.id/googleimage?query=${encodeURIComponent(query)}`;
         const response = await axios.get(url);
 
         // Validate response
         if (!response.data?.success || !response.data.results?.length) {
-            return reply("❌ No images found. Try different keywords");
+            return reply("*APKI PHOTOS NAHI MILI 😔*");
         }
 
         const results = response.data.results;
@@ -37,7 +37,7 @@ cmd({
                 from,
                 { 
                     image: { url: imageUrl },
-                    caption: `📷 Result for: ${query}\n> © Powered by 『BILAL-MD』`
+                    caption: `*👑 BILAL-MD WHATSAPP BOT 👑*`
                 },
                 { quoted: mek }
             );
