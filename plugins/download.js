@@ -16,29 +16,29 @@ cmd({
 }, async (conn, m, store, { from, q, reply }) => {
   try {
     if (!q || !q.startsWith("http")) {
-      return reply("❌ Please provide a valid Instagram link.");
+      return reply("*KISI BHI INSTAGRAM VIDEO KA LINK COPY KARO AUR ESE LIKHO ☺️❤️* \n \n *.IG ❮APKI INSTAGRAM VIDEO KA LINK❯* \n *AGAR ESE LIKHE GE TO APKI INSTAGRAM VIDEO DOWNLOAD HO JAYE GE ☺️❤️*");
     }
 
     await conn.sendMessage(from, {
-      react: { text: "⏳", key: m.key }
+      react: { text: "☺️", key: m.key }
     });
 
     const response = await axios.get(`https://api.davidcyriltech.my.id/instagram?url=${q}`);
     const data = response.data;
 
     if (!data || data.status !== 200 || !data.downloadUrl) {
-      return reply("⚠️ Failed to fetch Instagram video. Please check the link and try again.");
+      return reply("*APKI INSTAGRAM WALI VIDEO MUJHE NAHI MILI SORRY 😔*");
     }
 
     await conn.sendMessage(from, {
       video: { url: data.downloadUrl },
       mimetype: "video/mp4",
-      caption: "📥 *Instagram Video Downloaded Successfully!*"
+      caption: "*👑 BILAL-MD WHATSAPP BOT 👑*"
     }, { quoted: m });
 
   } catch (error) {
     console.error("Error:", error);
-    reply("❌ An error occurred while processing your request. Please try again.");
+    reply("ERROR");
   }
 });
 
@@ -164,7 +164,7 @@ cmd({
   pattern: "mediafire",
   alias: ["mfire"],
   desc: "To download MediaFire files.",
-  react: "🎥",
+  react: "📁",
   category: "download",
   filename: __filename
 }, async (conn, m, store, {
@@ -175,18 +175,18 @@ cmd({
 }) => {
   try {
     if (!q) {
-      return reply("❌ Please provide a valid MediaFire link.");
+      return reply("*MEDIAFIRE FILE KA LINK DO*");
     }
 
     await conn.sendMessage(from, {
-      react: { text: "⏳", key: m.key }
+      react: { text: "🤔", key: m.key }
     });
 
     const response = await axios.get(`https://www.dark-yasiya-api.site/download/mfire?url=${q}`);
     const data = response.data;
 
     if (!data || !data.status || !data.result || !data.result.dl_link) {
-      return reply("⚠️ Failed to fetch MediaFire download link. Ensure the link is valid and public.");
+      return reply("*DUBARA TRY KARO ☺️❤️*");
     }
 
     const { dl_link, fileName, fileType } = data.result;
@@ -194,14 +194,14 @@ cmd({
     const mime_type = fileType || "application/octet-stream";
 
     await conn.sendMessage(from, {
-      react: { text: "⬆️", key: m.key }
+      react: { text: "☺️", key: m.key }
     });
 
-    const caption = `╭━━━〔 *MEDIAFIRE DOWNLOADER* 〕━━━⊷\n`
-      + `┃▸ *File Name:* ${file_name}\n`
-      + `┃▸ *File Type:* ${mime_type}\n`
+    const caption = `╭━━━〔 *MEDIAFIRE* 〕━━━⊷\n`
+      + `┃👑 *NAME:* ${file_name}\n`
+      + `┃👑 *TYPE:* ${mime_type}\n`
       + `╰━━━⪼\n\n`
-      + `📥 *Downloading your file...*`;
+      + `*DOWNLOADING...*`;
 
     await conn.sendMessage(from, {
       document: { url: dl_link },
@@ -212,7 +212,7 @@ cmd({
 
   } catch (error) {
     console.error("Error:", error);
-    reply("❌ An error occurred while processing your request. Please try again.");
+    reply("ERROR");
   }
 });
 
@@ -231,32 +231,29 @@ cmd({
 }) => {
   try {
     if (!q) {
-      return reply("❌ Please provide an app name to search.");
+      return reply("*APKO KON C APPLICATION CHAHYE USKA NAME LIKHO JESE ☺️❤️ \n *.APK PUBG* \n *.APK GAMES* \n ESE JO BHI APPLICATION CHAHYE APKO TO AP USKA NAME LIKHE ☺️❤️**");
     }
 
-    await conn.sendMessage(from, { react: { text: "⏳", key: m.key } });
+    await conn.sendMessage(from, { react: { text: "🙂", key: m.key } });
 
     const apiUrl = `http://ws75.aptoide.com/api/7/apps/search/query=${q}/limit=1`;
     const response = await axios.get(apiUrl);
     const data = response.data;
 
     if (!data || !data.datalist || !data.datalist.list.length) {
-      return reply("⚠️ No results found for the given app name.");
+      return reply("*YEH APPLICATION MUJHE NAHI MIL RAHI SORRY 😔*");
     }
 
     const app = data.datalist.list[0];
     const appSize = (app.size / 1048576).toFixed(2); // Convert bytes to MB
 
-    const caption = `╭━━━〔 *APK Downloader* 〕━━━┈⊷
-┃ 📦 *Name:* ${app.name}
-┃ 🏋 *Size:* ${appSize} MB
-┃ 📦 *Package:* ${app.package}
-┃ 📅 *Updated On:* ${app.updated}
-┃ 👨‍💻 *Developer:* ${app.developer.name}
+    const caption = `╭━━━〔 *APK* 〕━━━┈⊷
+┃ 👑 *NAME:* ${app.name}
+┃ 👑 *MB:* ${appSize} 
 ╰━━━━━━━━━━━━━━━┈⊷
-🔗 *Powered By 『BILAL-MD』*`;
+*DOWNLOADING...🙂❤️*`;
 
-    await conn.sendMessage(from, { react: { text: "⬆️", key: m.key } });
+    await conn.sendMessage(from, { react: { text: "☺️", key: m.key } });
 
     await conn.sendMessage(from, {
       document: { url: app.file.path_alt },
@@ -265,11 +262,11 @@ cmd({
       caption: caption
     }, { quoted: m });
 
-    await conn.sendMessage(from, { react: { text: "✅", key: m.key } });
+    await conn.sendMessage(from, { react: { text: "😃", key: m.key } });
 
   } catch (error) {
     console.error("Error:", error);
-    reply("❌ An error occurred while fetching the APK. Please try again.");
+    reply("ERROR");
   }
 });
 
