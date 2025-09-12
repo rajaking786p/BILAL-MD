@@ -25,6 +25,6 @@ async (conn, mek, m, { body }) => {
       }
     }
   } catch (err) {
-    console.error('Auto-reply fetch error:', err.message);
+    console.error('ERROR', err.message);
   }
 });
