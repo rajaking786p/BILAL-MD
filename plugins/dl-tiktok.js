@@ -11,12 +11,12 @@ cmd({
 },
 async (conn, mek, m, { from, args, q, reply }) => {
     try {
-        if (!q) return reply("Please provide a TikTok video link.");
-        if (!q.includes("tiktok.com")) return reply("Invalid TikTok link.");
+        if (!q) return reply("*KISI BHI TIKTOK VIDEO KA LINK COPY KAR LO AUR ESE LIKHO ☺️❤️* \n\n\n *.TIKTOK ❮APK TIKTOK VIDEO KA LINK❯*");
+        if (!q.includes("tiktok.com")) return reply("*YEH TIKTOK VIDEO KA LINK NAHI 😏*");
         
-        reply("Downloading video, please wait...");
+        reply("*APKI TIKTOK VIDEO DOWNLOAD HO RAHI HAI ☺️❤️*");
         
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${q}`;
+        const apiUrl = `https://kaiz-apis.gleeze.com/api/tiktok-dl?url=${q}`;
         const { data } = await axios.get(apiUrl);
         
         if (!data.status || !data.data) return reply("Failed to fetch TikTok video.");
