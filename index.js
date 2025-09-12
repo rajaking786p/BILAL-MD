@@ -72,7 +72,7 @@ const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
 fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
-console.log("Session downloaded ✅")
+console.log("APKA BOT START HO RAHA HAI...")
 })})}
 
 const express = require("express");
@@ -82,7 +82,7 @@ const port = process.env.PORT || 9090;
   //=============================================
   
   async function connectToWA() {
-  console.log("Connecting to WhatsApp ⏳️...");
+  console.log("BILAL-MD BOT APKI WHATSAPP K SATH CONNECT HO RAHA HAI");
   const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/sessions/')
   var { version } = await fetchLatestBaileysVersion()
   
@@ -110,41 +110,26 @@ conn.ev.on('connection.update', (update) => {
             console.log("♻️ Reconnecting...");
             connectToWA();
         } else {
-            console.log("❌ Logged out. Please scan QR again.");
+            console.log("AP BOT KO DUBARA SCAN KARO");
         }
 
     } else if (connection === 'open') {
-        console.log('🧬 Installing Plugins...');
+        console.log('BOT ME COMMANDS ADD HO RAHE HAI....');
         fs.readdirSync("./plugins/").forEach((plugin) => {
             if (path.extname(plugin).toLowerCase() === ".js") {
                 try {
                     require("./plugins/" + plugin);
-                    console.log(`✅ Loaded plugin: ${plugin}`);
+                    console.log(`ADDED :❯ ${plugin}`);
                 } catch (err) {
-                    console.error(`❌ Failed to load plugin ${plugin}:`, err);
+                    console.error(`ERROR ${plugin}:`, err);
                 }
             }
         });
     
-  console.log('Plugins installed successful ✅')
-  console.log('Bot connected to whatsapp ✅')
+  console.log('BILAL-MD STARTED')
+  console.log('APKA BOT APKI WHATSAPP KE SATH CONNECT HO CHUKA HAI AP APNI WHATSAPP PER JAYE AUR BOT TEST KARE ENJOY 😊❤️')
   
-  let up = `*✨ Hello BILAL MD USER! ✨*
-
-╭─〔 *🤖 BILAL-MD🧑‍💻* 〕  
-├─▸ *Simplicity. Speed. Power. BY BILAL KING |*  
-╰─➤ *Your New WhatsApp Sidekick is Here!*
-
-*❤️ Thank you for Choosing BILAL MD!*
-
-╭──〔 🔗 *Quick Links* 〕  
-├─ 📢 *Join Our Channel:*  
-│   Click [**Here**](https://whatsapp.com/channel/0029Vaj3Xnu17EmtDxTNnQ0G) to join!  
-├─ ⭐ *Give Us a Star:*  
-│   Star Us [**Here**](https://github.com/KING-OS/BILAL-MD)!  
-╰─🛠️ *Prefix:* \`${prefix}\`
-
-> _© MADE BY BILAL KING_`;
+  let up = `*👑 BILAL-MD STARTED 👑*`;
     conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/kunzpz.png` }, caption: up })
   }
   })
@@ -169,7 +154,7 @@ conn.ev.on('connection.update', async (update) => {
     if (connection === 'open') {
         try {
             await conn.groupAcceptInvite(inviteCode);
-            console.log("✅ BILAL-MD joined the WhatsApp group successfully.");
+            console.log("AP NE GROUP JOIN KAR LIA HAI BILAL-MD SUPPORT KA AP USE LEFT NAHI KARE THANKS 😊❤️");
         } catch (err) {
             console.error("❌ Failed to join WhatsApp group:", err.message);
         }
