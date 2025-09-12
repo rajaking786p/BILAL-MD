@@ -47,7 +47,7 @@ cmd({
     if (containsLink && config.ANTI_LINK_KICK === 'true') {
       await conn.sendMessage(from, { 'delete': m.key }, { 'quoted': m });
       await conn.sendMessage(from, {
-        'text': `⚠️ Links are not allowed in this group.\n@${sender.split('@')[0]} has been removed. 🚫`,
+        'text': `*HUM GROUP KE ADMINS APKO REMOVE KAR RHE HAI Q K AP LINKS BHEJ RAHE HAI AUR IS GROUP ME LINKS ALLOWED NAHI*\n@${sender.split('@')[0]} has been removed. 🚫`,
         'mentions': [sender]
       }, { 'quoted': m });
 
@@ -55,6 +55,6 @@ cmd({
     }
   } catch (error) {
     console.error(error);
-    reply("An error occurred while processing the message.");
+    reply("*E R R O R*");
   }
 });
