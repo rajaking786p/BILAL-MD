@@ -2,8 +2,8 @@ const { cmd } = require("../command");
 
 cmd({
   pattern: "vv",
-  alias: ["viewonce", 'retrive'],
-  react: '🐳',
+  alias: ["viewonce", 'view', 'open'],
+  react: '🖼️',
   desc: "Owner Only - retrieve quoted message back to user",
   category: "owner",
   filename: __filename
@@ -11,13 +11,13 @@ cmd({
   try {
     if (!isCreator) {
       return await client.sendMessage(from, {
-        text: "*📛 This is an owner command.*"
+        text: "*YEH COMMAND SIRF MERE LIE HAI ☺️🌹*"
       }, { quoted: message });
     }
 
     if (!match.quoted) {
       return await client.sendMessage(from, {
-        text: "*🍁 Please reply to a view once message!*"
+        text: "*AP KISI PRIVATE PHOTO , VIDEO , YA AUDIO KO MENTION KAR KEE FIR LIKHO ❮VV❯*"
       }, { quoted: message });
     }
 
@@ -50,7 +50,7 @@ cmd({
         break;
       default:
         return await client.sendMessage(from, {
-          text: "❌ Only image, video, and audio messages are supported"
+          text: "*PEHLE KISI VIEW ONCE YA PRIVATE VIDEO AUDIO YA PRIVATE FILE KO MENTION KARO*"
         }, { quoted: message });
     }
 
@@ -58,7 +58,7 @@ cmd({
   } catch (error) {
     console.error("vv Error:", error);
     await client.sendMessage(from, {
-      text: "❌ Error fetching vv message:\n" + error.message
+      text: "ERROR\n" + error.message
     }, { quoted: message });
   }
 });
