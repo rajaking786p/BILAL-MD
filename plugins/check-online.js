@@ -5,21 +5,21 @@ cmd({
     alias: ["whosonline", "onlinemembers"],
     desc: "Check who's online in the group (Admins & Owner only)",
     category: "main",
-    react: "🟢",
+    react: "🌹",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, isGroup, isAdmins, isCreator, fromMe, reply }) => {
     try {
         // Check if the command is used in a group
-        if (!isGroup) return reply("❌ This command can only be used in a group!");
+        if (!isGroup) return reply("*YE COMMAND SIRF GROUPS ME USE KARE 😊*");
 
         // Check if user is either creator or admin
         if (!isCreator && !isAdmins && !fromMe) {
-            return reply("❌ Only bot owner and group admins can use this command!");
+            return reply("*YEH COMMAND SIRF MERE LIE HAI ☺️🌹*");
         }
 
         // Inform user that we're checking
-        await reply("🔄 Scanning for online members... This may take 15-20 seconds.");
+        await reply("*TESTING HO RAHI HAI KE IS GROUP ME KITNE MEMBERS ONLINE HAI...*");
 
         const onlineMembers = new Set();
         const groupData = await conn.groupMetadata(from);
@@ -64,7 +64,7 @@ async (conn, mek, m, { from, quoted, isGroup, isAdmins, isCreator, fromMe, reply
                 conn.ev.off('presence.update', presenceHandler);
                 
                 if (onlineMembers.size === 0) {
-                    return reply("⚠️ Couldn't detect any online members. They might be hiding their presence.");
+                    return reply("*BAD ME TESTING HOGI 🙂*");
                 }
                 
                 const onlineArray = Array.from(onlineMembers);
@@ -72,7 +72,7 @@ async (conn, mek, m, { from, quoted, isGroup, isAdmins, isCreator, fromMe, reply
                     `${index + 1}. @${member.split('@')[0]}`
                 ).join('\n');
                 
-                const message = `🟢 *Online Members* (${onlineArray.length}/${groupData.participants.length}):\n\n${onlineList}`;
+                const message = `*IS GROUP ME YE SAB MEMBERS IS TIME ONLINE HAI 😊🌹* \n *❮ TOTAL ❯* (${onlineArray.length}/${groupData.participants.length}):\n\n${onlineList}`;
                 
                 await conn.sendMessage(from, { 
                     text: message,
@@ -84,7 +84,7 @@ async (conn, mek, m, { from, quoted, isGroup, isAdmins, isCreator, fromMe, reply
         const interval = setInterval(checkOnline, checkInterval);
 
     } catch (e) {
-        console.error("Error in online command:", e);
-        reply(`An error occurred: ${e.message}`);
+        console.error("ERROR", e);
+        reply(`*E R R O R❯* ${e.message}`);
     }
 });
