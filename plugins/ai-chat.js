@@ -11,7 +11,7 @@ cmd({
 },
 async (conn, mek, m, { from, args, q, reply, react }) => {
     try {
-        if (!q) return reply("*AP KOI SAWAL MUJH SE PUCHNA CHAHTE HAI...🤔 \n *AP ESE LIKHO ☺️* \n* GPT ❮APNA SAWAL YAHA LIKHE❯* \n *JESE NICHE KUCH SAWAL PUCHE HUWE HAI \n *GPT MUJHE YEH CHIZ SAMAJH NAHI AA RAHI* \n *GPT PAKISTAN KA SAB SE BARA MULK KON SA HAJ* \n *GPT COMPUTER KESE CHALATE HA* \n *AGAR AP KO SAMAJH NA AYE TO MUJH SE PUCH LE☺️♥️");
+        if (!q) return reply("*AP KOI SAWAL MUJH SE PUCHNA CHAHTE HAI...🤔* \n *AP ESE LIKHO ☺️* \n\n *GPT ❮APNA SAWAL YAHA LIKHE❯* \n *JESE NICHE KUCH SAWAL PUCHE HUWE HAI* \n *GPT MUJHE YEH CHIZ SAMAJH NAHI AA RAHI* \n *GPT PAKISTAN KA SAB SE BARA MULK KON SA HAJ* \n *GPT COMPUTER KESE CHALATE HA* \n\n *AGAR AP KO SAMAJH NA AYE TO MUJH SE PUCH LE☺️♥️*");
 
         const apiUrl = `https://lance-frank-asta.onrender.com/api/gpt?q=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
@@ -40,7 +40,7 @@ cmd({
 },
 async (conn, mek, m, { from, args, q, reply, react }) => {
     try {
-        if (!q) return reply("*AP KOI SAWAL MUJH SE PUCHNA CHAHTE HAI TO ESE LIKHE ☺️♥️ \n *BING PAKISTAN KA QOMI JANWAR KON SA HAI \n *BING PAKISTAN DUNIYA ME KAHA PER MOOJUD HA* \n *BING MUSELMANO PER KITNY NAMAZE FARAZ HAI* \n AGAR APKO KUCH SAMAJH NA AYE TO MUJH SE PUCH SAKTE HAI ☺️♥️");
+        if (!q) return reply("*AP KOI SAWAL MUJH SE PUCHNA CHAHTE HAI TO ESE LIKHE ☺️♥️* \n \n *BING PAKISTAN KA QOMI JANWAR KON SA HAI* \n *BING PAKISTAN DUNIYA ME KAHA PER MOOJUD HA* \n *BING MUSELMANO PER KITNY NAMAZE FARAZ HAI* \n \n *AGAR APKO KUCH SAMAJH NA AYE TO MUJH SE PUCH SAKTE HAI ☺️♥️*");
 
         const apiUrl = `https://vapis.my.id/api/openai?q=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
@@ -69,14 +69,14 @@ cmd({
 },
 async (conn, mek, m, { from, args, q, reply, react }) => {
     try {
-        if (!q) return reply("*UHO APKE PAS KOI SAWAL HAI AUR APKO USKA JAWAB NAHI PATA AP MUJH SE PUCHIE ESE SAWAL PUCHIYE 😊♥️* \n *.AI PAKISTAN KE ABADI KITNY HAI* \n *.AI QURAN MAJEED ME KITNY SOORATEIN HAI* \n *AI TUM COMPUTER HO* ");
+        if (!q) return reply("*UHO APKE PAS KOI SAWAL HAI AUR APKO USKA JAWAB NAHI PATA AP MUJH SE PUCHIE ESE SAWAL PUCHIYE 😊♥️* \n\n *.AI PAKISTAN KE ABADI KITNY HAI* \n *.AI QURAN MAJEED ME KITNY SOORATEIN HAI* \n *AI TUM COMPUTER HO* ");
 
         const apiUrl = `https://api.ryzendesu.vip/api/ai/deepseek?text=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data || !data.answer) {
             await react("😔");
-            return reply("*APKA SAWAL MUJHE SAMAJH NAHI AA RAHA 😔");
+            return reply("*APKA SAWAL MUJHE SAMAJH NAHI AA RAHA 😔*");
         }
 
         await reply(`*APKE SAWAL KA JAWAB 😃*\n\n${data.answer}`);
