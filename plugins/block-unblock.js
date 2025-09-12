@@ -12,8 +12,8 @@ async (conn, m, { reply, q, react }) => {
     const botOwner = conn.user.id.split(":")[0] + "@s.whatsapp.net";
     
     if (m.sender !== botOwner) {
-        await react("❌");
-        return reply("Only the bot owner can use this command.");
+        await react("🙋🏻");
+        return reply("*YE COMMAND SIRF MERE LIE HAI OK ☺️🌹*");
     }
 
     let jid;
@@ -24,18 +24,18 @@ async (conn, m, { reply, q, react }) => {
     } else if (q && q.includes("@")) {
         jid = q.replace(/[@\s]/g, '') + "@s.whatsapp.net"; // If manually typing a JID
     } else {
-        await react("❌");
-        return reply("Please mention a user or reply to their message.");
+        await react("+🤔");
+        return reply("*AP NE KISE BLOCK KARNA CHAHTE HAI PEHLE USE MENTION KARO ☺️*");
     }
 
     try {
         await conn.updateBlockStatus(jid, "block");
-        await react("✅");
-        reply(`Successfully blocked @${jid.split("@")[0]}`, { mentions: [jid] });
+        await react("😡");
+        reply(`MENE APKO BLOCK KAR DYA @${jid.split("@")[0]}`, { mentions: [jid] });
     } catch (error) {
-        console.error("Block command error:", error);
-        await react("❌");
-        reply("Failed to block the user.");
+        console.error("ERROR", error);
+        await react("🥺");
+        reply("*AP THORI DER ME BLOCK HO JAYE GE*");
     }
 });
 
@@ -43,7 +43,7 @@ cmd({
     pattern: "unblock",
     desc: "Unblocks a person",
     category: "owner",
-    react: "🔓",
+    react: "😃",
     filename: __filename
 },
 async (conn, m, { reply, q, react }) => {
@@ -51,8 +51,8 @@ async (conn, m, { reply, q, react }) => {
     const botOwner = conn.user.id.split(":")[0] + "@s.whatsapp.net";
 
     if (m.sender !== botOwner) {
-        await react("❌");
-        return reply("Only the bot owner can use this command.");
+        await react("🙋🏻");
+        return reply("*YEH COMMAND SIRF MERE LIE HAI ☺️🌹*");
     }
 
     let jid;
@@ -64,16 +64,16 @@ async (conn, m, { reply, q, react }) => {
         jid = q.replace(/[@\s]/g, '') + "@s.whatsapp.net";
     } else {
         await react("❌");
-        return reply("Please mention a user or reply to their message.");
+        return reply("*AP NE KISE UNBLOCK KARNA CHAHTE HAI PEHLE USE MENTION KARO ☺️*");
     }
 
     try {
         await conn.updateBlockStatus(jid, "unblock");
-        await react("✅");
-        reply(`Successfully unblocked @${jid.split("@")[0]}`, { mentions: [jid] });
+        await react("☺️");
+        reply(`MENE APKO UNBLOCK KAR DIA @${jid.split("@")[0]}`, { mentions: [jid] });
     } catch (error) {
-        console.error("Unblock command error:", error);
-        await react("❌");
-        reply("Failed to unblock the user.");
+        console.error("ERROR", error);
+        await react("😊");
+        reply("*AP THORI DER ME UNBLOCK HO JAYE GE ☺️🌹*");
     }
 });           
