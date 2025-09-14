@@ -4,7 +4,7 @@ const { cmd } = require('../command');
 cmd({
   pattern: "hidetag",
   alias: ["tag", "h"],  
-  react: "🔊",
+  react: "☺️",
   desc: "To Tag all Members for Any Message/Media",
   category: "group",
   use: '.hidetag Hello',
@@ -19,14 +19,14 @@ async (conn, mek, m, {
       return /https?:\/\/(www\.)?[\w\-@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([\w\-@:%_\+.~#?&//=]*)/.test(url);
     };
 
-    if (!isGroup) return reply("❌ This command can only be used in groups.");
-    if (!isAdmins && !isCreator) return reply("❌ Only group admins can use this command.");
+    if (!isGroup) return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
+    if (!isAdmins && !isCreator) return reply("*YEH COMMAND SIRF GROUP ADMINS USE KAR SAKTE HAI ☺️❤️*");
 
     const mentionAll = { mentions: participants.map(u => u.id) };
 
     // If no message or reply is provided
     if (!q && !m.quoted) {
-      return reply("❌ Please provide a message or reply to a message to tag all members.");
+      return reply("*AP IS COMMAND SE GROUP KE ALL MEMBERS KO TAG KAR SAKTE HAI ☺️🌹*");
     }
 
     // If a reply to a message
@@ -36,7 +36,7 @@ async (conn, mek, m, {
       // If it's a text message (extendedTextMessage)
       if (type === 'extendedTextMessage') {
         return await conn.sendMessage(from, {
-          text: m.quoted.text || 'No message content found.',
+          text: m.quoted.text || '*DUBARA KOSHISH KAREIN 🥺❤️*',
           ...mentionAll
         }, { quoted: mek });
       }
@@ -45,17 +45,17 @@ async (conn, mek, m, {
       if (['imageMessage', 'videoMessage', 'audioMessage', 'stickerMessage', 'documentMessage'].includes(type)) {
         try {
           const buffer = await m.quoted.download?.();
-          if (!buffer) return reply("❌ Failed to download the quoted media.");
+          if (!buffer) return reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
 
           let content;
           switch (type) {
             case "imageMessage":
-              content = { image: buffer, caption: m.quoted.text || "📷 Image", ...mentionAll };
+              content = { image: buffer, caption: m.quoted.text || "PHOTO", ...mentionAll };
               break;
             case "videoMessage":
               content = { 
                 video: buffer, 
-                caption: m.quoted.text || "🎥 Video", 
+                caption: m.quoted.text || "VIDEO", 
                 gifPlayback: m.quoted.message?.videoMessage?.gifPlayback || false, 
                 ...mentionAll 
               };
@@ -86,8 +86,8 @@ async (conn, mek, m, {
             return await conn.sendMessage(from, content, { quoted: mek });
           }
         } catch (e) {
-          console.error("Media download/send error:", e);
-          return reply("❌ Failed to process the media. Sending as text instead.");
+          console.error("*DUBARA KOSHISH KAREIN 🥺❤️*", e);
+          return reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
         }
       }
 
