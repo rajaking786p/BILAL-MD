@@ -25,23 +25,35 @@ const linkPatterns = [
   /https?:\/\/(?:www\.)?medium\.com\/\S+/gi
 ];
 
-cmd({
-  on: 'body'
-}, async (conn, m, store, {
-  from,
-  body,
-  sender,
-  isGroup,
-  isAdmins,
-  isBotAdmins
-}) => {
+cmd(
+  { on: 'text', pattern: 'antilink', fromMe: true },
+  async (conn, m, store, { from, body, sender, isGroup, isAdmins, isBotAdmins }) => {
+    try {
+      if (!isGroup || !isBotAdmins) {
+        return;
+      }
+      const args = body.toLowerCase().split(' ')[1];
+      if (args === 'delete') {
+        config.DELETE_LINKS = 'true';
+        await conn.sendMessage(from, { text: 'Antilink enabled' }, { quoted: m });
+      } else if (args === 'off') {
+        config.DELETE_LINKS = 'false';
+        await conn.sendMessage(from, { text: 'Antilink disabled' }, { quoted: m });
+      } else if (args === undefined) {
+        await conn.sendMessage(from, { text: 'Please specify delete or off' }, { quoted: m });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+cmd({ on: 'body' }, async (conn, m, store, { from, body, sender, isGroup, isAdmins, isBotAdmins }) => {
   try {
     if (!isGroup || isAdmins || !isBotAdmins) {
       return;
     }
-
     const containsLink = linkPatterns.some(pattern => pattern.test(body));
-
     if (containsLink && config.DELETE_LINKS === 'true') {
       await conn.sendMessage(from, { delete: m.key }, { quoted: m });
     }
