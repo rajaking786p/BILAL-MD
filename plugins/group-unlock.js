@@ -5,21 +5,21 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, 
 cmd({
     pattern: "unlockgc",
     alias: ["unlock"],
-    react: "🔓",
+    react: "☺️",
     desc: "Unlock the group (Allows new members to join).",
     category: "group",
     filename: __filename
 },           
 async (conn, mek, m, { from, isGroup, isAdmins, isBotAdmins, reply }) => {
     try {
-        if (!isGroup) return reply("❌ This command can only be used in groups.");
-        if (!isAdmins) return reply("❌ Only group admins can use this command.");
-        if (!isBotAdmins) return reply("❌ I need to be an admin to unlock the group.");
+        if (!isGroup) return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
+        if (!isAdmins) return reply("*YEH COMMAND SIRF GROUP ADMINS USE KAR SAKTE HAI ☺️❤️*");
+        if (!isBotAdmins) return reply("*PEHLE MUJHE IS GROUP ME ADMIN BANAO ☺️❤️*");
 
         await conn.groupSettingUpdate(from, "unlocked");
-        reply("✅ Group has been unlocked. New members can now join.");
+        reply("*AB YE GROUP UNLOCK HO CHUKA HAI 😊🌺* \n *AB IS GROUP ME NEW MEMBERS JOIN KAR SAKTE HAI ☺️🌹*");
     } catch (e) {
-        console.error("Error unlocking group:", e);
-        reply("❌ Failed to unlock the group. Please try again.");
+        console.error("*DUBARA KOSHISH KAREIN 🥺❤️*", e);
+        reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
     }
 });
