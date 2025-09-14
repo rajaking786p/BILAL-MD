@@ -3,7 +3,7 @@ const { cmd, commands } = require('../command')
 const { runtime } = require('../lib/functions')
 
 cmd({
-    pattern: "list",
+    pattern: "listtts",
     alias: ["listcmd", "commands"],
     desc: "Show all available commands with descriptions",
     category: "menu",
