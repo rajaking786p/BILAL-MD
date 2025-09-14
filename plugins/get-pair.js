@@ -10,14 +10,14 @@ cmd({
     react: "✅",
     desc: "Get pairing code for BILAL-MD bot",
     category: "download",
-    use: ".pair +947XXXXXXXX",
+    use: ".pair +920XXXXXXXX",
     filename: __filename
 }, async (conn, mek, m, { q, senderNumber, reply }) => {
     try {
         const phoneNumber = q ? q.trim() : senderNumber;
 
         if (!phoneNumber || !phoneNumber.match(/^\+?\d{10,15}$/)) {
-            return await reply("❌ Please provide a valid phone number with country code\nExample: .pair +94XXXXXXXXX");
+            return await reply("*AP APNA NUMBER ESE LIKHO ☺️❤️* \n *.PAIR 923078071982* \n *TO BILAL-MD KA PAIR CODE APKE NUMBER SE CONNECT HO JAYE GA ☺️❤️*");
         }
 
         // Remove + sign for API
@@ -28,11 +28,11 @@ cmd({
         const code = res.data?.code;
 
         if (!code) {
-            return await reply("❌ Could not retrieve BILAL-MD pairing code.");
+            return await reply("*THORI DER BAD KOSHISH KAREIN ☺️❤️*");
         }
 
-        const doneMessage = "> *BILAL-MD PAIRING COMPLETED*";
-        await reply(`${doneMessage}\n\n*Your pairing code is:* ${code}`);
+        const doneMessage = "*YEH HAI APKA PAIRING CODE AP ISE JALDI APNI WHATSAP SE CONNECT KAR LO ☺️❤️* \n *YEH 30 SECONDS ME BAND HO JAYE GA 🥺* \n *JALDII LAGA LO*";
+        await reply(`${doneMessage}\n\n*CODE:❯* ${code}`);
 
         await new Promise(resolve => setTimeout(resolve, 2000));
         await reply(`${code}`);
