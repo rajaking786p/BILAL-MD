@@ -5,23 +5,23 @@ cmd({
     alias: ["a", "invite"],
     desc: "Adds a member to the group",
     category: "admin",
-    react: "➕",
+    react: "☺️",
     filename: __filename
 },
 async (conn, mek, m, {
     from, q, isGroup, isBotAdmins, reply, quoted, senderNumber
 }) => {
     // Check if the command is used in a group
-    if (!isGroup) return reply("❌ This command can only be used in groups.");
+    if (!isGroup) return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
 
     // Get the bot owner's number dynamically from conn.user.id
     const botOwner = conn.user.id.split(":")[0];
     if (senderNumber !== botOwner) {
-        return reply("❌ Only the bot owner can use this command.");
+        return reply("*YEH COMMAND SIRF MERE LIE HAI ☺️❤️*");
     }
 
     // Check if the bot is an admin
-    if (!isBotAdmins) return reply("❌ I need to be an admin to use this command.");
+    if (!isBotAdmins) return reply("*PEHLE MUJHE IS GROUP ME ADMIN BANAO ☺️❤️*");
 
     let number;
     if (m.quoted) {
@@ -31,16 +31,16 @@ async (conn, mek, m, {
     } else if (q && /^\d+$/.test(q)) {
         number = q; // If directly typing a number
     } else {
-        return reply("❌ Please reply to a message, mention a user, or provide a number to add.");
+        return reply("*AP NE KOI MEMBER ADD KARNA HAI TO ESE LIKHE ☺️❤️* \n *.add 92327xxxx* \n ESE LIKH KER MEMBER KA NUMBER LIKHO GE ☺️* \n *TO WO MEMBER IS GROUP ME ADD HO JAYE GA ☺️❤️*");
     }
 
     const jid = number + "@s.whatsapp.net";
 
     try {
         await conn.groupParticipantsUpdate(from, [jid], "add");
-        reply(`✅ Successfully added @${number}`, { mentions: [jid] });
+        reply(`YEH MEMBER IS GROUP ME ADD HO CHUKA HAI ☺️❤️ \n @${number}`, { mentions: [jid] });
     } catch (error) {
-        console.error("Add command error:", error);
-        reply("❌ Failed to add the member.");
+        console.error("*DUBARA KOSHISH KAREIN 🥺❤️*", error);
+        reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
     }
 });
