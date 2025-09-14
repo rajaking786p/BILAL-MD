@@ -26,35 +26,43 @@ const linkPatterns = [
   /https?:\/\/(?:www\.)?medium\.com\/\S+/gi
 ];
 
-cmd({
-  'on': "body"
-}, async (conn, m, store, {
-  from,
-  body,
-  sender,
-  isGroup,
-  isAdmins,
-  isBotAdmins,
-  reply
-}) => {
+cmd(
+  { on: 'text', pattern: 'antilink', fromMe: true },
+  async (conn, m, store, { from, body, sender, isGroup, isAdmins, isBotAdmins, reply }) => {
+    try {
+      if (!isGroup || !isBotAdmins) {
+        return;
+      }
+      const args = body.split(' ')[1];
+      if (args === 'kick') {
+        config.ANTI_LINK_KICK = 'true';
+        await conn.sendMessage(from, { text: 'Antilink enabled' }, { quoted: m });
+      } else if (args === 'off') {
+        config.ANTI_LINK_KICK = 'false';
+        await conn.sendMessage(from, { text: 'Antilink disabled' }, { quoted: m });
+      } else if (args === undefined) {
+        await conn.sendMessage(from, { text: 'Please specify kick or off' }, { quoted: m });
+      }
+    } catch (error) {
+      console.error(error);
+      reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
+    }
+  }
+);
+
+cmd({ on: 'body' }, async (conn, m, store, { from, body, sender, isGroup, isAdmins, isBotAdmins, reply }) => {
   try {
     if (!isGroup || isAdmins || !isBotAdmins) {
       return;
     }
-
     const containsLink = linkPatterns.some(pattern => pattern.test(body));
-
     if (containsLink && config.ANTI_LINK_KICK === 'true') {
-      await conn.sendMessage(from, { 'delete': m.key }, { 'quoted': m });
-      await conn.sendMessage(from, {
-        'text': `*HUM GROUP KE ADMINS APKO REMOVE KAR RHE HAI Q K AP LINKS BHEJ RAHE HAI AUR IS GROUP ME LINKS ALLOWED NAHI*\n@${sender.split('@')[0]} has been removed. 🚫`,
-        'mentions': [sender]
-      }, { 'quoted': m });
-
+      await conn.sendMessage(from, { delete: m.key }, { quoted: m });
+      await conn.sendMessage(from, { text: `*HUM GROUP KE ADMINS APKO REMOVE KAR RHE HAI Q K AP LINKS BHEJ RAHE HAI AUR IS GROUP ME LINKS ALLOWED NAHI*\n@${sender.split('@')[0]} has been removed. 🚫`, mentions: [sender] }, { quoted: m });
       await conn.groupParticipantsUpdate(from, [sender], "remove");
     }
   } catch (error) {
     console.error(error);
-    reply("*E R R O R*");
+    reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
   }
 });
