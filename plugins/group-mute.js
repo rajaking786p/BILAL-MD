@@ -4,22 +4,22 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, 
 
 cmd({
     pattern: "mute",
-    alias: ["groupmute"],
-    react: "🔇",
+    alias: ["groupmute", "offgroup", "groupoff"],
+    react: "🔒",
     desc: "Mute the group (Only admins can send messages).",
     category: "group",
     filename: __filename
 },           
 async (conn, mek, m, { from, isGroup, senderNumber, isAdmins, isBotAdmins, reply }) => {
     try {
-        if (!isGroup) return reply("❌ This command can only be used in groups.");
-        if (!isAdmins) return reply("❌ Only group admins can use this command.");
-        if (!isBotAdmins) return reply("❌ I need to be an admin to mute the group.");
+        if (!isGroup) return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
+        if (!isAdmins) return reply("*YEH COMMAND SIRF GROUP ADMINS USE KAR SAKTE HAI ☺️❤️*");
+        if (!isBotAdmins) return reply("*PEHLE MUJHE IS GROUP ME ADMIN BANAO ☺️❤️*");
 
         await conn.groupSettingUpdate(from, "announcement");
-        reply("✅ Group has been muted. Only admins can send messages.");
+        reply("*YEH GROUP AB BAND HO CHUKA HAI ☺️🌹*");
     } catch (e) {
-        console.error("Error muting group:", e);
-        reply("❌ Failed to mute the group. Please try again.");
+        console.error("*DUBARA KOSHISH KAREIN 🥺❤️*", e);
+        reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
     }
 });
