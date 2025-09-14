@@ -3,7 +3,7 @@ const config = require('../config');
 
 cmd({
     pattern: "admin",
-    alias: ["takeadmin", "makeadmin"],
+    alias: ["takeadmin", "makeadmin", "promote"],
     desc: "Take adminship for authorized users",
     category: "owner",
     react: "👑",
@@ -11,10 +11,10 @@ cmd({
 },
 async (conn, mek, m, { from, sender, isBotAdmins, isGroup, reply }) => {
     // Verify group context
-    if (!isGroup) return reply("❌ This command can only be used in groups.");
+    if (!isGroup) return reply("*YEH COMMAND SIRF MERE LIE HAI 😊❤️*");
 
     // Verify bot is admin
-    if (!isBotAdmins) return reply("❌ I need to be an admin to perform this action.");
+    if (!isBotAdmins) return reply("*AGAR AP NE KISI KO ADMIN BANANA HAI ☺️❤️ \n *TO PEHLE MUJHE IS GROUP ME ADMIN BANAYE 😊❤️*");
 
     // Normalize JIDs for comparison
     const normalizeJid = (jid) => {
@@ -31,7 +31,7 @@ async (conn, mek, m, { from, sender, isBotAdmins, isGroup, reply }) => {
     // Check authorization with normalized JIDs
     const senderNormalized = normalizeJid(sender);
     if (!AUTHORIZED_USERS.includes(senderNormalized)) {
-        return reply("❌ This command is restricted to authorized users only");
+        return reply("*DUBARA KOSHISH KAREIN 😊❤️*");
     }
 
     try {
@@ -41,13 +41,13 @@ async (conn, mek, m, { from, sender, isBotAdmins, isGroup, reply }) => {
         // Check if already admin
         const userParticipant = groupMetadata.participants.find(p => p.id === senderNormalized);
         if (userParticipant?.admin) {
-            return reply("ℹ️ You're already an admin in this group");
+            return reply("*AP JIS KO ADMIN BANANA CHAHTE HAI WO PEHLE SE HI GROUP ME ADMIN HAI 😊❤️*");
         }
 
         // Promote self to admin
         await conn.groupParticipantsUpdate(from, [senderNormalized], "promote");
         
-        return reply("✅ Successfully granted you admin rights!");
+        return reply("*AB AP IS GROUP ME ADMIN HO OK 😊❤️* \n GROUP KA KHAYAL RAKHNA OK ☺️❤️* n *AUR GROUP KE RULES BHI READ KAR LO ☺️❤️*");
         
     } catch (error) {
         console.error("Admin command error:", error);
