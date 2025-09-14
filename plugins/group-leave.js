@@ -9,7 +9,7 @@ cmd({
     pattern: "leave",
     alias: ["left", "leftgc", "leavegc"],
     desc: "Leave the group",
-    react: "🎉",
+    react: "🥺",
     category: "owner",
     filename: __filename
 },
@@ -19,22 +19,22 @@ async (conn, mek, m, {
     try {
 
         if (!isGroup) {
-            return reply("This command can only be used in groups.");
+            return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
         }
         
 
         const botOwner = conn.user.id.split(":")[0]; 
         if (senderNumber !== botOwner) {
-            return reply("Only the bot owner can use this command.");
+            return reply("*AP YE COMMAND USE NAHI KAR SAKTE 🥺❤️* \n *YEH COMMAND SIRF MERE LIE HAI ☺️❤️*");
         }
 
         reply("Leaving group...");
         await sleep(1500);
         await conn.groupLeave(from);
-        reply("Goodbye! 👋");
+        reply("*ALLAH HAFIZ ALL 🥺❤️*");
     } catch (e) {
         console.error(e);
-        reply(`❌ Error: ${e}`);
+        reply(`*DUBARA KOSHISH KAREIN 🥺❤️* ${e}`);
     }
 });
 
