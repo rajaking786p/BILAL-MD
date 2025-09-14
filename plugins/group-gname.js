@@ -5,22 +5,22 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, 
 cmd({
     pattern: "updategname",
     alias: ["upgname", "gname"],
-    react: "📝",
+    react: "🌹",
     desc: "Change the group name.",
     category: "group",
     filename: __filename
 },           
 async (conn, mek, m, { from, isGroup, isAdmins, isBotAdmins, args, q, reply }) => {
     try {
-        if (!isGroup) return reply("❌ This command can only be used in groups.");
-        if (!isAdmins) return reply("❌ Only group admins can use this command.");
-        if (!isBotAdmins) return reply("❌ I need to be an admin to update the group name.");
-        if (!q) return reply("❌ Please provide a new group name.");
+        if (!isGroup) return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
+        if (!isAdmins) return reply("*YEH COMMAND SIRF GROUP ADMINS USE KAR SAKTE HAI ☺️❤️*");
+        if (!isBotAdmins) return reply("*PEHLE MUJHE IS GROUP ME ADMIN BANAO ☺️❤️*");
+        if (!q) return reply("*AP NE GROUP KA NAME CHANGE KARNA HAI TO ESE CHANGE KARO ☺️❤️* \n *.GNAME ❮GROUP KA NEW NAME❯* \n *JAB AP ESE LIKHE GE TO GROUP KA NAME CHANGE HO JAYE GA ☺️🌹*");
 
         await conn.groupUpdateSubject(from, q);
-        reply(`✅ Group name has been updated to: *${q}*`);
+        reply(`*GROUP KA NAME CHANGE HO GAYA HAI ☺️❤️* *${q}*`);
     } catch (e) {
-        console.error("Error updating group name:", e);
-        reply("❌ Failed to update the group name. Please try again.");
+        console.error("*DUBARA KOSHISH KAREIN 🥺❤️*", e);
+        reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
     }
 });
