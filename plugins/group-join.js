@@ -4,7 +4,7 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, 
 
 cmd({
     pattern: "join",
-    react: "📬",
+    react: "☺️",
     alias: ["joinme", "f_join"],
     desc: "To Join a Group from Invite link",
     category: "group",
@@ -13,14 +13,14 @@ cmd({
 }, async (conn, mek, m, { from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isCreator, isDev, isAdmins, reply }) => {
     try {
         const msr = {
-            own_cmd: "You don't have permission to use this command."
+            own_cmd: "*AP YE COMMAND USE NAHI KAR SAKTE 🥺❤️*"
         };
 
         // Only allow the creator to use the command
         if (!isCreator) return reply(msr.own_cmd);
 
         // If there's no input, check if the message is a reply with a link
-        if (!q && !quoted) return reply("*Please write the Group Link*️ 🖇️");
+        if (!q && !quoted) return reply("*AGAR AP NE KOI GROUP JOIN KARNA HAI TO ESE LIKHO ☺️❤️* \n *.JOIN ❮ GROUP LINK ❯* \n *JAB ESE GROUP KA LINK TYPE KRE GE TO AP GROUP ME JOIN HO JAYE GE ☺️❤️*");
 
         let groupLink;
 
@@ -32,15 +32,15 @@ cmd({
             groupLink = q.split('https://chat.whatsapp.com/')[1];
         }
 
-        if (!groupLink) return reply("❌ *Invalid Group Link* 🖇️");
+        if (!groupLink) return reply("*YEH WHATSAPP GROUP KA LINK NAHI 🥺❤️*");
 
         // Accept the group invite
         await conn.groupAcceptInvite(groupLink);
-        await conn.sendMessage(from, { text: `✔️ *Successfully Joined*` }, { quoted: mek });
+        await conn.sendMessage(from, { text: `*GROUP ME JOIN HO CHUKE HAI ☺️❤️*` }, { quoted: mek });
 
     } catch (e) {
         await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
         console.log(e);
-        reply(`❌ *Error Occurred!!*\n\n${e}`);
+        reply(`*DUBARA KOSHISH KAREIN 🥺❤️*\n\n${e}`);
     }
 });
