@@ -4,7 +4,7 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, 
 
 cmd({
     pattern: "mute",
-    alias: ["groupmute", "offgroup", "groupoff"],
+    alias: ["groupmute", "offgroup", "groupoff", "offgc", "gcoff"],
     react: "🔒",
     desc: "Mute the group (Only admins can send messages).",
     category: "group",
