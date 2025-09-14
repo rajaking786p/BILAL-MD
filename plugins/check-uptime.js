@@ -15,10 +15,7 @@ cmd({
     const startTime = new Date(Date.now() - process.uptime() * 1000);
 
     // Style 8: Social Media Style
-    const message = `⏱️ *Uptime Report* ⏱️
-🟢 Online for: ${uptime}
-📅 Since: ${startTime.toLocaleString()}
-${config.DESCRIPTION}`;
+    const message = `*UPTIME :❯${uptime}*`;
 
     await conn.sendMessage(from, {
       text: message,
