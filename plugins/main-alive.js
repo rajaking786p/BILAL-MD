@@ -12,7 +12,7 @@ cmd({
   filename: __filename
 }, async (conn, mek, m, { from, sender, reply }) => {
   try {
-    const status = `*GG...😊♥️* *ME \n *HOO IDHAR 😊♥️* \n *APKO KOI HELP CHAHYE TO MUJHE BATAIYE ☺️🦋*`;
+    const status = `*GG...☺️* \n *ME IDHAR HI HOO APKE PAS 🌹* \n *APKI HELP KE LIE ☺️🌹* \n *KOI BHI HELP CHAHYE TO MUJHE BATANA 🥰🦋*`;
     await conn.sendMessage(from, { text: status });
   } catch (e) {
     console.error("_MERE BOT ME KOI ERROR HAI SHAYAD AP PARSHAN NAA HO YEH PROBLEM BAHUT JALDI FIX HO JAYE GE_", e);
