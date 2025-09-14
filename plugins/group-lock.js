@@ -5,22 +5,22 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, 
 cmd({
     pattern: "lockgc",
     alias: ["lock"],
-    react: "🔒",
+    react: "🌹",
     desc: "Lock the group (Prevents new members from joining).",
     category: "group",
     filename: __filename
 },           
 async (conn, mek, m, { from, isGroup, isAdmins, isBotAdmins, reply }) => {
     try {
-        if (!isGroup) return reply("❌ This command can only be used in groups.");
-        if (!isAdmins) return reply("❌ Only group admins can use this command.");
-        if (!isBotAdmins) return reply("❌ I need to be an admin to lock the group.");
+        if (!isGroup) return reply("*YEH COMMAND SIRF GROUPS ME USE KAREIN ☺️❤️*");
+        if (!isAdmins) return reply("*YEH COMMAND SIRF GROUP ADMINS USE KAR SAKTE HAI ☺️❤️*");
+        if (!isBotAdmins) return reply("*PEHLE MUJHE IS GROUP ME ADMIN BANAO ☺️❤️*");
 
         await conn.groupSettingUpdate(from, "locked");
-        reply("✅ Group has been locked. New members cannot join.");
+        reply("*YEH GROUP AB LOCK HO CHUKA HAI 😊* \n *AB KOI BHI NEW MEMBER IS GROUP KO JOIN NAHI KAR PAYE GA ☺️🌹*");
     } catch (e) {
-        console.error("Error locking group:", e);
-        reply("❌ Failed to lock the group. Please try again.");
+        console.error("*DUBARA KOSHISH KAREIN 🥺❤️*", e);
+        reply("*DUBARA KOSHISH KAREIN 🥺❤️*");
     }
 });
     
