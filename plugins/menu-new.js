@@ -11,7 +11,7 @@ cmd({
     filename: __filename
 }, async (conn, mek, m, { from, reply }) => {
     try {
-        const menuCaption = `╭━━━〔 *👑 BiLAL-MD 👑* 〕━━━┈⊷
+        const menuCaption = `*╭━━━〔 👑 BiLAL-MD 👑 〕━━━┈⊷*
 *┃👑╭──────────────*
 *┃👑│ USER:❯* ${config.OWNER_NAME}
 *┃👑│ DEVELOPER :❯* BiLAL
@@ -193,12 +193,7 @@ cmd({
 ┃👑│ • fullpp 
 ┃👑│ • setpp 
 ┃👑│ • restart
-┃👑│ • shutdown
 ┃👑│ • updatecmd
-┃👑│ • gjid
-┃👑│ • jid 
-┃👑│ • listcmd
-┃👑│ • allmenu
 *╰━━━━━━━━━━━━━━━┈⊷*
 *👑 BILAL-MD WHATSAPP BOT 👑*`,
                 image: true
