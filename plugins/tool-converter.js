@@ -51,31 +51,31 @@ cmd({
     pattern: 'tomp3',
     desc: 'Convert media to audio',
     category: 'audio',
-    react: '🎵',
+    react: '☺️',
     filename: __filename
 }, async (client, match, message, { from }) => {
     // Input validation
     if (!match.quoted) {
         return await client.sendMessage(from, {
-            text: "*🔊 Please reply to a video/audio message*"
+            text: "*KISI BHI VIDEO KO MENTION KARO AUR LIKHO ❮TOMP3❯ TO WO VIDEO AUDIO ME CONVERT HO JAYE GE ☺️🌹*"
         }, { quoted: message });
     }
 
     if (!['videoMessage', 'audioMessage'].includes(match.quoted.mtype)) {
         return await client.sendMessage(from, {
-            text: "❌ Only video/audio messages can be converted"
+            text: "*SIRF VIDEO KO MENTION KARO ☺️🌹*"
         }, { quoted: message });
     }
 
     if (match.quoted.seconds > 300) {
         return await client.sendMessage(from, {
-            text: "⏱️ Media too long (max 5 minutes)"
+            text: "*APKI VIDEO 2 MINT KI HONI CHAHYE ☺️🌹* \n *YEH VIDEO 5 MINT SE ZYADA HAI 🥺❤️*"
         }, { quoted: message });
     }
 
     // Send processing message and store it
     await client.sendMessage(from, {
-        text: "🔄 Converting to audio..."
+        text: "*VIDEO AB AUDIO ME CONVERT HO RAHI HAI...☺️*"
     }, { quoted: message });
 
     try {
@@ -92,7 +92,7 @@ cmd({
     } catch (e) {
         console.error('Conversion error:', e.message);
         await client.sendMessage(from, {
-            text: "❌ Failed to process audio"
+            text: "*DUBARA KOSHISH KAREIN 🥺❤️*"
         }, { quoted: message });
     }
 });
